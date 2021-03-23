@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServer", "BlazorServe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssembly", "BlazorWebAssembly\BlazorWebAssembly.csproj", "{3967BDD1-1F6F-43E2-BF0D-8AAE90B1CCDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Models", "EmployeeManagement.Models\EmployeeManagement.Models.csproj", "{CF94745E-B69F-44D7-BA75-C3F5B788A7AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagement.Models", "EmployeeManagement.Models\EmployeeManagement.Models.csproj", "{CF94745E-B69F-44D7-BA75-C3F5B788A7AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Web", "EmployeeManagement.Web\EmployeeManagement.Web.csproj", "{15E778AC-8187-41A2-B6E7-E69103453E7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagement.Web", "EmployeeManagement.Web\EmployeeManagement.Web.csproj", "{15E778AC-8187-41A2-B6E7-E69103453E7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Api", "EmployeeManagement.Api\EmployeeManagement.Api.csproj", "{C80BF6D0-CB5E-4C8A-B13B-AEE96C391385}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{15E778AC-8187-41A2-B6E7-E69103453E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15E778AC-8187-41A2-B6E7-E69103453E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15E778AC-8187-41A2-B6E7-E69103453E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80BF6D0-CB5E-4C8A-B13B-AEE96C391385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80BF6D0-CB5E-4C8A-B13B-AEE96C391385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80BF6D0-CB5E-4C8A-B13B-AEE96C391385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80BF6D0-CB5E-4C8A-B13B-AEE96C391385}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
