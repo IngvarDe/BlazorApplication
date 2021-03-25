@@ -64,6 +64,14 @@ namespace EmployeeManagement.Api.Controllers
                     return BadRequest();
                 }
 
+                var emp = _employeeRepository.GetEmployeeByEmail(employee.Email);
+
+                if (emp != null)
+                {
+                    ModelState.AddModelError("email", "email already on use");
+                    return BadRequest(ModelState);
+                }
+
                 var create = await _employeeRepository.AddEmployee(employee);
 
                 return CreatedAtAction(nameof(GetEmployee), new { id = create.EmployeeId }, create);
@@ -74,5 +82,33 @@ namespace EmployeeManagement.Api.Controllers
                     "Error retriving data from database");
             }
         }
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Employee>> UpdateUmployee(int id, Employee employee)
+        {
+            try
+            {
+                if (id != employee.EmployeeId)
+                {
+                    return BadRequest("Employee Id mismatch");
+                }
+
+                var result = await _employeeRepository.GetEmployee(id);
+
+                if (result == null)
+                {
+                    return NotFound($"Employee with Id = {id} not found");
+                }
+
+                return await _employeeRepository.UpdateEmployee(employee);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error updating data");
+            }
+        }
+
+
     }
 }
