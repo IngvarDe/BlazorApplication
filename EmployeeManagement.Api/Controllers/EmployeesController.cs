@@ -20,6 +20,28 @@ namespace EmployeeManagement.Api.Controllers
             _employeeRepository = employeeRepository;
         }
 
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<Employee>>> Search(string name, Gender? gender)
+        {
+            try
+            {
+                var result = await _employeeRepository.Search(name, gender);
+
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+                
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retriving data from database");
+            }
+        }
+
+
         [HttpGet]
         public async Task<IActionResult> GetEmployees()
         {
@@ -30,7 +52,7 @@ namespace EmployeeManagement.Api.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retriving data from database");
+                    "Error retriving data from database1");
             }
         }
 
@@ -51,7 +73,7 @@ namespace EmployeeManagement.Api.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retriving data from database");
+                    "Error retriving data from database2");
             }
         }
 
