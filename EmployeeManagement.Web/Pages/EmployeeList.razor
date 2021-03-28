@@ -3,6 +3,10 @@
 
 <h3>EmployeeList</h3>
 
+@*<input type="checkbox" id="showFooter" @bind="ShowFooter" />
+<label for="showFooter">Show Footer</label>*@
+
+
 @if (Employees == null)
 {
     <div class="spinner"></div>
@@ -27,4 +31,14 @@ else
             </div>
         }
     </div>
+
+
+    //kui saan andmed n'htavaks, siis aktiveerin selle koodi
+    @*<div class="card-deck">
+        @foreach (var employee in Employees)
+        {
+            <DisplayEmployee Employee="employee" ShowFooter="ShowFooter">
+            </DisplayEmployee>
+        }
+    </div>*@
 }
