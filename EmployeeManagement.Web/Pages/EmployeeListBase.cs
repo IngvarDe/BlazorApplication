@@ -20,6 +20,7 @@ namespace EmployeeManagement.Web.Pages
             Employees = (await _employeeServices.GetEmployees()).ToList();
         }
 
+        public bool ShowFooter { get; set; }
 
         protected int SelectedEmployeesCount { get; set; } = 0;
         protected void EmployeeSelectionChanged(bool isSelected)

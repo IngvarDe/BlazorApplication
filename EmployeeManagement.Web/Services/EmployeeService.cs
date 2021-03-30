@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,13 @@ namespace EmployeeManagement.Web.Services
             _httpClient = httpClient;
         }
 
+        [HttpGet]
         public async Task<Employee> GetEmployee(int id)
         {
             return await _httpClient.GetJsonAsync<Employee>($"api/employees/{id}");
         }
 
+        [HttpGet]
         public async Task<IEnumerable<Employee>> GetEmployees()
         {
             return await _httpClient.GetJsonAsync<Employee[]>("api/employees");
