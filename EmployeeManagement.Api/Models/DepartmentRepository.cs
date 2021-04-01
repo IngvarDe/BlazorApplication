@@ -18,13 +18,13 @@ namespace EmployeeManagement.Api.Models
 
         public async Task<Department> GetDepartment(int departmentId)
         {
-            return await _appDbContext.Department
+            return await _appDbContext.Departments
                 .FirstOrDefaultAsync(d => d.DepartmentId == departmentId);
         }
 
         public async Task<IEnumerable<Department>> GetDepartments()
         {
-            return await _appDbContext.Department.ToListAsync();
+            return await _appDbContext.Departments.ToListAsync();
         }
     }
 }

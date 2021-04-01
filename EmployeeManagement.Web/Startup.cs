@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,16 @@ namespace EmployeeManagement.Web
             {
                 client.BaseAddress = new Uri("https://localhost:44331/");
             });
+
+            //services.AddControllers()
+            //    .AddNewtonsoftJson(options =>
+            //    {
+            //        options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            //    });
+            //services.AddMvc().AddNewtonsoftJson();
+            //services.AddControllers().AddNewtonsoftJson(options =>
+            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            //);
 
             services.AddRazorPages();
             services.AddServerSideBlazor();

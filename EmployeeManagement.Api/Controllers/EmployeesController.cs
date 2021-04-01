@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Api.Models;
 using EmployeeManagement.Models;
+using EmployeeManagement.Web.Pages;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,10 +15,12 @@ namespace EmployeeManagement.Api.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _employeeRepository;
-
-        public EmployeesController(IEmployeeRepository employeeRepository)
+        private readonly AppDbContext _context;
+        public EmployeesController(IEmployeeRepository employeeRepository,
+            AppDbContext context)
         {
             _employeeRepository = employeeRepository;
+            _context = context;
         }
 
         [HttpGet("{search}")]
@@ -31,7 +34,7 @@ namespace EmployeeManagement.Api.Controllers
                 {
                     return Ok(result);
                 }
-                
+
                 return NotFound();
             }
             catch (Exception)
@@ -43,16 +46,26 @@ namespace EmployeeManagement.Api.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetEmployees()
+        public IActionResult GetEmployees()
         {
             try
             {
-                return Ok(await _employeeRepository.GetEmployees());
+                var seed = _context.Employees
+                    .Select(x => new EmployeeListViewModel
+                    {
+                        EmployeeId = x.EmployeeId,
+                        FirstName = x.FirstName,
+                        LastName = x.LastName,
+                        PhotoPath = x.PhotoPath
+                    });
+
+                return Ok(seed);
+                //return Ok(await _employeeRepository.GetEmployees());
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retriving data from database1");
+                    e);
             }
         }
 

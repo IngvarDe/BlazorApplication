@@ -8,17 +8,50 @@ using EmployeeManagement.Web.Services;
 
 namespace EmployeeManagement.Web.Pages
 {
+    public class EmployeeListViewModel
+    {
+        public int EmployeeId { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string PhotoPath { get; set; }
+
+        protected int SelectedEmployeesCount { get; set; } = 0;
+        protected void EmployeeSelectionChanged(bool isSelected)
+        {
+            if (isSelected)
+            {
+                SelectedEmployeesCount++;
+            }
+            else
+            {
+                SelectedEmployeesCount--;
+            }
+        }
+    }
+
+
     public class EmployeeListBase : ComponentBase
     {
         [Inject]
         public IEmployeeService _employeeServices { get; set; }
 
-        public IEnumerable<Employee> Employees { get; set; }
+        public IEnumerable<EmployeeListViewModel> Employees { get; set; }
 
-        protected override async Task OnInitializedAsync()
-        {
-            Employees = (await _employeeServices.GetEmployees()).ToList();
-        }
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    Employees = (await _employeeServices.GetEmployees()).ToList();
+        //}
+
+        //public int EmployeeId { get; set; }
+
+        //public string FirstName { get; set; }
+
+        //public string LastName { get; set; }
+
+        //public string PhotoPath { get; set; }
 
         public bool ShowFooter { get; set; }
 
